@@ -1,0 +1,14 @@
+name: minify js File
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+
+  minifyJOB:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Minify Action
+        uses: anthonyftwang/minify-action@v1.0.1
+  
