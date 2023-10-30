@@ -16,7 +16,7 @@ jobs:
 
       # Job for Minify-JS
       - name: Minify-JS Action
-        if: $(basename "$file") != index1.js && $(basename "$file") != index2.js
+        if: $($(basename "$file") != index1.js && $(basename "$file") != index2.js)
         uses: jossydevers/minify-js@v1.0.0
         with:
           directory: 'src/'
