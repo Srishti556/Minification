@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check out code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
       - name: Install Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v2
         with:
-            node-version: '16'  # Set the Node.js version you want to use
+            node-version: '14'  # Set the Node.js version you want to use
       - name: Install terser
         run: npm install terser
       - name: Minify JavaScript Files
@@ -27,7 +27,7 @@ jobs:
           then
           # Minify the JavaScript file
           minifiedFile=$(basename "$file" .js)-min.js
-          npx terser --compress --mangle "$minifiedFile" -o "$minifiedFile"
+          npx terser --compress --mangle --output "$file" -- "$minifiedFile"
           echo "Minified and saved as $minifiedFile"
           echo "$(basename "$file")"
           fi
