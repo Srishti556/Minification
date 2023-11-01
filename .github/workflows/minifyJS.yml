@@ -32,15 +32,8 @@ jobs:
           echo "$(basename "$file")"
           fi
           done
- echo_minified_file:
-   needs: minifyJOB
-   runs-on: ubuntu-latest
-
-   steps:
-     - name: Check out code
-       uses: actions/checkout@v2
-     - name: list
-       run: |
+      - name: list
+        run: |
          folderPath="./lib"  # Set the path to your JavaScript files folder
          minifiedFiles=("$folderPath"/*-min.js)
          if [ -z "$minifiedFiles" ]
