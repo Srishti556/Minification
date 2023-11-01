@@ -35,6 +35,6 @@ jobs:
       - name: list
         run: |
          folderPath="./lib" 
-         find "$folderPath" -type f -name "*-min.js"
+         echo "$(find "$folderPath" -type f -name "*-min.js")"
          
      
