@@ -35,7 +35,7 @@ jobs:
           
           
           mv $minifiedFile $folderPath/
-          git add $folderPath/
+          git add $folderPath/$minifiedFile
           git commit -m "add new file"
           git push 
           fi
