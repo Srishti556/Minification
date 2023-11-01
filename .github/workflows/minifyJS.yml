@@ -30,24 +30,16 @@ jobs:
           npx terser --compress --mangle --output "$minifiedFile" -- "$file"
           echo "Minified and saved as $minifiedFile"
           echo "$(basename "$file")"
-          cat "$file"
-          cat "$minifiedFile"
           fi
           done
- echo_minified_file:
-   needs: minifyJOB
-   runs-on: ubuntu-latest
-   steps:
-     - name: list
-       run: |
-         folderPath="./lib"  # Set the path to your JavaScript files folder
-         minifiedFiles=("$folderPath"/*-min.js)
+      - name: list
+        run: |
          if [ -z "$minifiedFiles" ]
          then
          echo "No minified files found in $folderPath"
          else
          echo "Minified files in $folderPath:"
-         for file in $minifiedFiles
+         for file in $folderPath/*-min.js
          do
            echo "$(basename "$file")"
          done
