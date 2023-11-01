@@ -12,13 +12,3 @@ jobs:
      run: |
        folderPath="./lib" 
        find "$folderPath" -type f -name "*-min.js" -exec echo {} \;
-   - name: Echo Minified Files
-     run: |
-       filesList=$(echo "${{ steps.list_files.outputs.stdout }}")
-       if [ -z "$filesList" ]
-       then
-         echo "No minified files found in $folderPath"
-       else
-         echo "Minified files in $folderPath:"
-         echo "$filesList"
-       fi
