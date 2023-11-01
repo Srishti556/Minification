@@ -28,9 +28,8 @@ jobs:
           if [ $(basename "$file") != "index1.js" ] && [ $(basename "$file") != "index2.js" ]
           then
           # Minify the JavaScript file
-          npx terser --compress --mangle --output "$file.min.js" -- "$file"
-          # Overwrite the original file with the minified version
-          mv "$file.min.js" "$file"
-          echo "Minified and saved $(basename "$file")"
+          minifiedFile=$(basename "$file" .js)-min.js
+          npx terser --compress --mangle --output "$minifiedFile" -- "$file"
+          echo "Minified and saved as $minifiedFile"
           fi
           done
