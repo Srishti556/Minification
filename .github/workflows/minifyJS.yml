@@ -9,10 +9,7 @@ jobs:
   minifyJOB:
     runs-on: ubuntu-latest
     steps:
-      # Checks-out your repository
-      - name: check out code
-        uses: actions/checkout@v2
-        
+  
       - name: Install Node.js
         uses: actions/setup-node@v2
         with:
