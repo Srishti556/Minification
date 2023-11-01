@@ -20,7 +20,9 @@ jobs:
       - name: Install terser
         run: npm install terser
       - name: Minify JavaScript Files
-        run: |          
+        run: |   
+          git config --global user.email "sharma_srishti@amicusglobal.com"
+          git config --global user.name "Srishti556"
           folderPath="./lib" 
           for file in $folderPath/*.js
           do
