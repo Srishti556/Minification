@@ -35,6 +35,8 @@ jobs:
       - name: list
         run: |
          folderPath="./lib" 
-         echo "$(find "$folderPath" -type f -name "*-min.js")"
-         
-     
+         find "$folderPath" -type f -name "*-min.js"
+      - name: Echo
+        run: |
+         fileList= $(echo "${{ steps.list.outputs.stdout }}")
+         echo "$fileList"
