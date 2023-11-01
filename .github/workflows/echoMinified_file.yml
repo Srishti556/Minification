@@ -10,12 +10,10 @@ jobs:
    - name: List Minified JavaScript Files
      id: list_files
      run: |
-       folderPath="./your_folder_path"  # Set the path to your JavaScript files folder
-       # Use find to list files with names ending in -min.js
+       folderPath="./lib" 
        find "$folderPath" -type f -name "*-min.js" -exec echo {} \;
    - name: Echo Minified Files
      run: |
-       # Extract the list of files from the previous step's output
        filesList=$(echo "${{ steps.list_files.outputs.stdout }}")
        if [ -z "$filesList" ]
        then
