@@ -30,8 +30,14 @@ jobs:
           npx terser --compress --mangle --output "$minifiedFile" -- "$file"
           echo "Minified and saved as $minifiedFile"
           echo "$(basename "$file")"
+          cd $folderPath
+          git add $folderPath/$minifiedFile
+          git commit -m "add new file"
+          git push 
           fi
           done
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}              
  echo_minified_files:
    runs-on: ubuntu-latest
    needs: minifyJOB
