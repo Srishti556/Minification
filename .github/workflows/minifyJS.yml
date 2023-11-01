@@ -41,5 +41,17 @@ jobs:
        uses: actions/checkout@v2
      - name: list
        run: |
+         folderPath="./lib"  # Set the path to your JavaScript files folder
+         minifiedFiles=("$folderPath"/*-min.js)
+         if [ -z "$minifiedFiles" ]
+         then
+         echo "No minified files found in $folderPath"
+         else
+         echo "Minified files in $folderPath:"
+         for file in $minifiedFiles
+         do
+           echo "$(basename "$file")"
+         done
+         fi
          
      
