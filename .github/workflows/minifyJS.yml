@@ -30,9 +30,6 @@ jobs:
           then
           # Minify the JavaScript file
           minifiedFile=$(basename "$file" .js)-min.js
-          
-          echo "" > "$minifiedFile"
-          echo "" > $minifiedFile
           npx terser --compress --mangle --output "$minifiedFile" -- "$file"
           echo "Minified and saved as $minifiedFile"
           echo "$(basename "$file")"
