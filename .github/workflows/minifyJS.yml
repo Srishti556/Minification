@@ -21,6 +21,7 @@ jobs:
         run: npm install terser
       - name: Minify JavaScript Files
         run: |
+          
           folderPath="./lib"  #Set the path to your JavaScript files folder
           for file in $folderPath/*.js
           do
@@ -29,9 +30,22 @@ jobs:
           then
           # Minify the JavaScript file
           minifiedFile=$(basename "$file" .js)-min.js
-          touch $minifiedFile
+          
+          echo "" > "$minifiedFile"
+          echo "" > $minifiedFile
           npx terser --compress --mangle --output "$minifiedFile" -- "$file"
           echo "Minified and saved as $minifiedFile"
           echo "$(basename "$file")"
           fi
           done
+ echo_minified_file:
+   needs: minifyJOB
+   runs-on: ubuntu-latest
+
+   steps:
+     - name: Check out code
+       uses: actions/checkout@v2
+     - name: list
+       run: |
+         
+     
