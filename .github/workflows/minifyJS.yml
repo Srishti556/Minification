@@ -9,7 +9,8 @@ jobs:
   minifyJOB:
     runs-on: ubuntu-latest
     steps:
-  
+      - name: check out code
+        uses: actions/checkout@v2
       - name: Install Node.js
         uses: actions/setup-node@v2
         with:
@@ -26,7 +27,7 @@ jobs:
           then
           # Minify the JavaScript file
           minifiedFile=$(basename "$file" .js)-min.js
-          npx terser --compress --mangle --output "$minifiedFile" -- "$file"
+          npx terser --compress --mangle "$file" -o "$file-min.js"
           echo "Minified and saved as $minifiedFile"
           echo "$(basename "$file")"
           fi
