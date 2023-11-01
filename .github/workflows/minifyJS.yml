@@ -34,15 +34,10 @@ jobs:
           done
       - name: list
         run: |
-         if [ -z "$minifiedFiles" ]
-         then
-         echo "No minified files found in $folderPath"
-         else
-         echo "Minified files in $folderPath:"
+         folderPath="./lib" 
          for file in $folderPath/*-min.js
          do
-           echo "$(basename "$file")"
+         echo "$(basename "$file")"
          done
-         fi
          
      
