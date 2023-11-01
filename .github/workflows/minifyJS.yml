@@ -39,7 +39,7 @@ jobs:
    - name: List Minified Files
      run: |
        folderPath="./lib"
-       minifiedFiles=("$folderPath"/*-min.js)
+       minifiedFiles=(./lib/*-min.js)
        echo "Minified files in $folderPath:"
          for file in $minifiedFiles
          do
