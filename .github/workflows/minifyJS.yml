@@ -21,7 +21,8 @@ jobs:
         run: npm install terser
       - name: Minify JavaScript Files
         run: |   
-
+          git config --global user.email "sharma_srishti@amicusglobal.com"
+          git config --global user.name "Srishti556"
           folderPath="./lib" 
           for file in $folderPath/*.js
           do
@@ -34,8 +35,6 @@ jobs:
           
           
           mv $minifiedFile $folderPath/
-          git config --global user.email "sharma_srishti@amicusglobal.com"
-          git config --global user.name "Srishti556"
           git add $folderPath/
           git commit -m "add new file"
           git push 
@@ -50,9 +49,8 @@ jobs:
    - name: List Minified Files
      run: |
        folderPath="./lib"
-       minifiedFiles=(./lib/*-min.js)
        echo "Minified files in $folderPath:"
-         for file in $minifiedFiles
-         do
-           echo "$(basename "$file")"
-         done 
+       for file in $folderPath/*-min.js
+       do
+       echo "$file"
+       done
