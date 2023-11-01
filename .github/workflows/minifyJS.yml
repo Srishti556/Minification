@@ -21,8 +21,7 @@ jobs:
         run: npm install terser
       - name: Minify JavaScript Files
         run: |   
-          git config --global user.email "sharma_srishti@amicusglobal.com"
-          git config --global user.name "Srishti556"
+
           folderPath="./lib" 
           for file in $folderPath/*.js
           do
@@ -32,8 +31,12 @@ jobs:
           npx terser --compress --mangle --output "$minifiedFile" -- "$file"
           echo "Minified and saved as $minifiedFile"
           echo "$(basename "$file")"
+          
+          
           mv $minifiedFile $folderPath/
-          git add $folderPath/$minifiedFile
+          git config --global user.email "sharma_srishti@amicusglobal.com"
+          git config --global user.name "Srishti556"
+          git add $folderPath/
           git commit -m "add new file"
           git push 
           fi
