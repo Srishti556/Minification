@@ -16,19 +16,16 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v2
         with:
-            node-version: '14'  # Set the Node.js version you want to use
+            node-version: '14'
       - name: Install terser
         run: npm install terser
       - name: Minify JavaScript Files
-        run: |
-          
-          folderPath="./lib"  #Set the path to your JavaScript files folder
+        run: |          
+          folderPath="./lib" 
           for file in $folderPath/*.js
           do
-          # Check if the file is not index1.js or index2.js
           if [ $(basename "$file") != "index1.js" ] && [ $(basename "$file") != "index2.js" ]
-          then
-          # Minify the JavaScript file
+          then         
           minifiedFile=$(basename "$file" .js)-min.js
           npx terser --compress --mangle --output "$minifiedFile" -- "$file"
           echo "Minified and saved as $minifiedFile"
