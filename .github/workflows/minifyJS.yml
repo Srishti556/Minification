@@ -32,11 +32,16 @@ jobs:
           echo "$(basename "$file")"
           fi
           done
-      - name: list
-        run: |
-         folderPath="./lib" 
-         find "$folderPath" -type f -name "*-min.js"
-      - name: Echo
-        run: |
-         fileList= $(echo "${{ steps.list.outputs.stdout }}")
-         echo "$fileList"
+ echo_minified_files:
+   runs-on: ubuntu-latest
+   needs: minifyJOB
+   steps:
+   - name: List Minified Files
+     run: |
+       folderPath="./lib"
+       minifiedFiles=("$folderPath"/*-min.js)
+       echo "Minified files in $folderPath:"
+         for file in $minifiedFiles
+         do
+           echo "$(basename "$file")"
+         done 
