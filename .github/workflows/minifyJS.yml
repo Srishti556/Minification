@@ -30,7 +30,7 @@ jobs:
           npx terser --compress --mangle --output "$minifiedFile" -- "$file"
           echo "Minified and saved as $minifiedFile"
           echo "$(basename "$file")"
-          cat "file"
+          cat "$file"
           cat "$minifiedFile"
           fi
           done
