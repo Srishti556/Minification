@@ -30,7 +30,6 @@ jobs:
           npx terser --compress --mangle --output "$minifiedFile" -- "$file"
           echo "Minified and saved as $minifiedFile"
           echo "$(basename "$file")"
-          cd $folderPath
           git add $folderPath/$minifiedFile
           git commit -m "add new file"
           git push 
