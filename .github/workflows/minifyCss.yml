@@ -2,9 +2,9 @@ name: Minify CSS
 on:
  workflow_dispatch:
 jobs:
-  minify:
-   runs-on: ubunty-latest
-   steps:
+ minify:
+  runs-on: ubunty-latest
+  steps:
    - name: Check out code
      uses: actions/checkout@v2
    - name: Install Node.js
