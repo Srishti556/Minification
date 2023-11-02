@@ -32,5 +32,6 @@ jobs:
          then
            echo "Minified version: $(basename "$file")"
            cat $folderPath/$(basename "$file")
+           echo "" 
          fi
        done
