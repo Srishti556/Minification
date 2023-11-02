@@ -18,10 +18,10 @@ jobs:
        folderPath="./test" 
        for file in $folderPath/*.css
        do
-         echo "normal version:" cat "$(basename "$file")"
+         echo "normal version:" cat $folderPath/$(basename "$file")
          if [ $(basename "$file") != "1.css" ] && [ $(basename "$file") != "2.css" ]
          then
            cleancss -o "$file" "$file"
          fi
-         echo "Minified version:" cat "$(basename "$file")"
+         echo "Minified version:" cat $folderPath/$(basename "$file")
        done
