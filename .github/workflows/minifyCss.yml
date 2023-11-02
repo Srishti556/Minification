@@ -15,7 +15,7 @@ jobs:
      run: npm install clean-css-cli -g
    - name: Minify CSS Files
      run: |
-       folderPath="./your_css_folder_path"  # Set the path to your CSS files folder
+       folderPath="./test"  # Set the path to your CSS files folder
        for file in $folderPath/*.css
        do
          # Check if the file is not index1.css or index2.css
