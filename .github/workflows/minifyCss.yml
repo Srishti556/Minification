@@ -1,0 +1,26 @@
+name: Minify CSS
+on:
+ workflow_dispatch:
+jobs:
+  minify:
+   runs-on: ubunty-latest
+   steps:
+   - name: Check out code
+     uses: actions/checkout@v2
+   - name: Install Node.js
+     uses: actions/setup-node@v2
+     with:
+       node-version: '14'  # Set the Node.js version you want to use
+   - name: Install clean-css
+     run: npm install clean-css-cli -g
+   - name: Minify CSS Files
+     run: |
+       folderPath="./your_css_folder_path"  # Set the path to your CSS files folder
+       for file in $folderPath/*.css
+       do
+         # Check if the file is not index1.css or index2.css
+         if [ $(basename "$file") != "index1.css" ] && [ $(basename "$file") != "index2.css" ]
+         then
+           cleancss -o "$file" "$file"
+         fi
+       done
