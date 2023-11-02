@@ -25,6 +25,7 @@ jobs:
        done
    - name: echo
      run: |
+       folderPath="./test" 
        for file in $folderPath/*.css
        do
          if [ $(basename "$file") != "1.css" ] && [ $(basename "$file") != "2.css" ]
