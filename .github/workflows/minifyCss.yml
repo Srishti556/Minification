@@ -22,9 +22,6 @@ jobs:
          then
            cleancss -o "$file" "$file"
          fi
-         echo "Minified version:"
-         cat $folderPath/$(basename "$file")
-         echo ""
        done
  echo_Minified_files:
    runs-on: ubuntu-latest
