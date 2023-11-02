@@ -10,16 +10,15 @@ jobs:
    - name: Install Node.js
      uses: actions/setup-node@v2
      with:
-       node-version: '14'  # Set the Node.js version you want to use
+       node-version: '14'
    - name: Install clean-css
      run: npm install clean-css-cli -g
    - name: Minify CSS Files
      run: |
-       folderPath="./test"  # Set the path to your CSS files folder
+       folderPath="./test" 
        for file in $folderPath/*.css
        do
-         # Check if the file is not index1.css or index2.css
-         if [ $(basename "$file") != "index1.css" ] && [ $(basename "$file") != "index2.css" ]
+         if [ $(basename "$file") != "1.css" ] && [ $(basename "$file") != "2.css" ]
          then
            cleancss -o "$file" "$file"
          fi
