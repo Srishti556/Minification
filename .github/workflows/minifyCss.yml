@@ -20,10 +20,12 @@ jobs:
        do
          echo "normal version:"
          cat $folderPath/$(basename "$file")
+         echo ""
          if [ $(basename "$file") != "1.css" ] && [ $(basename "$file") != "2.css" ]
          then
            cleancss -o "$file" "$file"
          fi
          echo "Minified version:"
          cat $folderPath/$(basename "$file")
+         echo ""
        done
